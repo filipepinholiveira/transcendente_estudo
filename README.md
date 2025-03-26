@@ -306,3 +306,29 @@ Agora que você já tem a configuração básica do seu projeto, comece a estuda
 Esse processo de aprendizado contínuo e prática vai te preparar muito bem para o desenvolvimento do frontend para o seu projeto transcendente!
 
 Se precisar de mais ajuda ou tiver dúvidas durante o processo, estou à disposição para ajudar! 😊
+
+
+
+
+
+
+
+
+# ############################################# AJUDA NO ERRO ######################################################################## #
+
+1. Forçar o uso do OpenSSL Legacy Provider (versões do Node.js 17 ou superior)
+
+Uma solução temporária é forçar o Node.js a usar o OpenSSL Legacy Provider. Isso pode ser feito definindo a variável de ambiente NODE_OPTIONS para --openssl-legacy-provider.
+
+Tente rodar o comando da seguinte forma:
+
+export NODE_OPTIONS=--openssl-legacy-provider
+npm start
+
+Ou, se você estiver usando o yarn:
+
+export NODE_OPTIONS=--openssl-legacy-provider
+yarn start
+
+Isso deve resolver o erro e permitir que o servidor de desenvolvimento seja iniciado.
+
