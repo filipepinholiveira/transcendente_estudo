@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Adivinhação de Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /* Imagem de fundo */
+            background-image: url(file:///home/vboxuser/transcendente_estudo/css/images/space.jpg); /* Aqui você coloca o link da imagem */
+            background-size: cover; /* Isso faz a imagem cobrir todo o fundo da tela */
+            background-position: center; /* Isso centraliza a imagem */
+            background-attachment: fixed; /* Isso faz com que a imagem de fundo não se mova ao rolar a página */
+            padding: 20px;
+        }
+        h1 {
+            color: #fff; /* Altere a cor do texto para branco para contrastar com o fundo */
+        }
+        .game-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jogo de Adivinhação de Número</h1>
+    <div class="game-container">
+        <p>Advinhe o número entre 1 e 100:</p>
+        <input type="number" id="guess" placeholder="Digite um número" min="1" max="100">
+        <button onclick="checkGuess()">Adivinhar</button>
+
+        <div class="message" id="message"></div>
+        <p id="attempts">Tentativas: 0</p>
+    </div>
+
+    <script>
+        // Função para gerar um número aleatório entre 1 e 100
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = document.getElementById("guess").value;
+            const messageElement = document.getElementById("message");
+            const attemptsElement = document.getElementById("attempts");
+
+            // Verifica se o input é válido
+            if (userGuess < 1 || userGuess > 100 || isNaN(userGuess)) {
+                messageElement.textContent = "Por favor, insira um número entre 1 e 100.";
+                messageElement.classList.remove("correct", "wrong");
+                messageElement.classList.add("wrong");
+                return;
+            }
+
+            attempts++;
+            attemptsElement.textContent = `Tentativas: ${attempts}`;
+
+            // Verifica a adivinhação
+            if (userGuess == secretNumber) {
+                messageElement.textContent = `Parabéns! Você acertou o número!`;
+                messageElement.classList.remove("wrong");
+                messageElement.classList.add("correct");
+            } else if (userGuess < secretNumber) {
+                messageElement.textContent = `O número é maior. Tente novamente!`;
+                messageElement.classList.remove("correct");
+                messageElement.classList.add("wrong");
+            } else {
+                messageElement.textContent = `O número é menor. Tente novamente!`;
+                messageElement.classList.remove("correct");
+                messageElement.classList.add("wrong");
+            }
+        }
+    </script>
+</body>
+</html>
