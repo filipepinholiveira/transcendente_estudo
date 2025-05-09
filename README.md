@@ -1,4 +1,9 @@
 
+VIDEOS DE SUPORTE:
+
+  https://www.youtube.com/watch?v=9xh-CHyjNYc (12:44)
+
+
 
 
 
